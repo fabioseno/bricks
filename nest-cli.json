@@ -1,0 +1,25 @@
+{
+  "projects": {
+    "email": {
+      "type": "library",
+      "root": "libs/email",
+      "entryFile": "index",
+      "sourceRoot": "libs/email/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/email/tsconfig.lib.json"
+      }
+    },
+    "notification": {
+      "type": "library",
+      "root": "libs/notification",
+      "entryFile": "index",
+      "sourceRoot": "libs/notification/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/notification/tsconfig.lib.json"
+      }
+    }
+  },
+  "compilerOptions": {
+    "webpack": true
+  }
+}

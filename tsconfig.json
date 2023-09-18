@@ -1,0 +1,8 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {},
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
+}

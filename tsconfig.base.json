@@ -1,0 +1,42 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@bricks/notification": [
+        "libs/notification/src/index.ts"
+      ],
+      "@bricks/shared/domain": [
+        "libs/shared/src/lib/domain"
+      ],
+      "@bricks/shared/error": [
+        "libs/shared/src/lib/error"
+      ],
+      "@bricks/shared/message": [
+        "libs/shared/src/lib/message"
+      ],
+      "@bricks/shared/validation": [
+        "libs/shared/src/lib/validation"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
+}

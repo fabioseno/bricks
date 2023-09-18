@@ -1,0 +1,72 @@
+{
+  "name": "send-email-lambda",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/send-email-lambda/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/send-email-lambda",
+        "main": "apps/send-email-lambda/src/main.ts",
+        "tsConfig": "apps/send-email-lambda/tsconfig.app.json",
+        "assets": [],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/send-email-lambda/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "apps/send-email-lambda:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "apps/send-email-lambda:build:development"
+        },
+        "production": {
+          "buildTarget": "apps/send-email-lambda:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/send-email-lambda/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "apps/send-email-lambda/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
