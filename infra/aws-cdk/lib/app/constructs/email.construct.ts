@@ -5,7 +5,7 @@ import * as sqs from 'aws-cdk-lib/aws-sqs';
 import { Construct } from "constructs";
 
 export class EmailConstruct extends Construct {
-  constructor(scope: Construct, id: string) {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id);
 
     const emailDlQueue = new sqs.Queue(this, 'email-queue-dlq', {
@@ -24,7 +24,7 @@ export class EmailConstruct extends Construct {
 
     const sendEmailLambda = new lambda.Function(this, "send-email-lambda", {
       runtime: cdk.aws_lambda.Runtime.NODEJS_18_X,
-      handler: 'index.handler',
+      handler: 'main.handler',
       code: lambda.Code.fromAsset('../../dist/apps/send-email-lambda'),
       functionName: 'send-email-lambda',
       environment: {

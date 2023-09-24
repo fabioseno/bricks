@@ -18,6 +18,7 @@ import { AppModule } from './app/app.module';
 exports.handler = async (event: SQSEvent) => {
   const app = await NestFactory.createApplicationContext(AppModule);
 
+  console.log(event.Records[0]);
   console.log(event.Records[0].body);
   const data = JSON.parse(event.Records[0].body);
   console.log(data.name);

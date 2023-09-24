@@ -5,20 +5,35 @@
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nx/webpack:webpack",
+      "executor": "@nx/esbuild:esbuild",
       "outputs": [
         "{options.outputPath}"
       ],
       "defaultConfiguration": "production",
       "options": {
-        "target": "node",
         "compiler": "tsc",
+        "format": [
+          "cjs"
+        ],
+        "sourcemap": "linked",
+        "minify": true,
+        "deleteOutputPath": true,
+        "thirdParty": true,
+        "platform": "node",
+        "target": "es2020",
         "outputPath": "dist/apps/send-email-lambda",
         "main": "apps/send-email-lambda/src/main.ts",
         "tsConfig": "apps/send-email-lambda/tsconfig.app.json",
         "assets": [],
         "isolatedConfig": true,
-        "webpackConfig": "apps/send-email-lambda/webpack.config.js"
+        "webpackConfig": "apps/send-email-lambda/webpack.config.js",
+        "external": [
+          "@nestjs/microservices",
+          "@nestjs/websockets",
+          "class-validator",
+          "class-transformer",
+          "cache-manager"
+        ]
       },
       "configurations": {
         "development": {},

@@ -1,6 +1,6 @@
 {
-  "app": "npx ts-node --prefer-ts-exts bin/backend.ts",
-  "profile": "sushi",
+  "app": "npx ts-node --prefer-ts-exts bin/infra.ts",
+  "profile": "bricks-cdk-admin",
   "watch": {
     "include": [
       "**"
@@ -56,6 +56,14 @@
     "@aws-cdk/aws-efs:denyAnonymousAccess": true,
     "@aws-cdk/aws-opensearchservice:enableOpensearchMultiAzWithStandby": true,
     "@aws-cdk/aws-lambda-nodejs:useLatestRuntimeVersion": true,
-    "@aws-cdk/aws-efs:mountTargetOrderInsensitiveLogicalId": true
+    "@aws-cdk/aws-efs:mountTargetOrderInsensitiveLogicalId": true,
+    "aws-cdk:trust-bootstrap": {
+      "bootstrapStackName": "BricksStack",
+      "roleArn": "arn:aws:iam::849184581497:role/cdk-role"
+    }
+  },
+  "env": {
+    "region": "us-east-1",
+    "account": "849184581497"
   }
 }
